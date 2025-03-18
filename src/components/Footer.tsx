@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Twitter } from 'lucide-react';
@@ -12,9 +11,9 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* Company Info */}
           <div className="space-y-4">
-            <h3 className="text-xl font-bold text-gold">Golden Events</h3>
+            <h3 className="text-xl font-bold text-gold">EventNora</h3>
             <p className="text-gold/80 text-sm max-w-xs">
-              Crafting unforgettable moments with meticulous planning and elegant execution for all your special occasions.
+              Creating unforgettable moments with meticulous planning and elegant execution for all your special occasions.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-gold hover:text-gold-light transition-colors">
@@ -76,15 +75,15 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-start space-x-3">
                 <MapPin size={18} className="text-gold mt-0.5" />
-                <span className="text-gold/80 text-sm">123 Event Street, Celebration City, 10001</span>
+                <span className="text-gold/80 text-sm">Levent, Istanbul, Turkey</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone size={18} className="text-gold" />
-                <span className="text-gold/80 text-sm">+1 (555) 123-4567</span>
+                <span className="text-gold/80 text-sm">+90 (212) 555-0123</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail size={18} className="text-gold" />
-                <span className="text-gold/80 text-sm">info@goldenevents.com</span>
+                <span className="text-gold/80 text-sm">info@eventnora.com</span>
               </div>
             </div>
           </div>
@@ -94,14 +93,14 @@ const Footer = () => {
         <div className="border-t border-gold/20 pt-8 mt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-gold/70 text-sm">
-              © {currentYear} Golden Events. All rights reserved.
+              © {currentYear} EventNora. All rights reserved.
             </p>
             <div className="text-gold/70 text-xs flex gap-6">
               <Link to="/privacy" className="hover:text-gold transition-colors">Privacy Policy</Link>
               <Link to="/terms" className="hover:text-gold transition-colors">Terms of Service</Link>
-              <div className="flex items-center gap-1">
-                <span>Currently in:</span>
-                <span className="text-gold">English</span>
+              <div className="flex items-center gap-4">
+                <button className="hover:text-gold transition-colors">English</button>
+                <button className="hover:text-gold transition-colors">Türkçe</button>
               </div>
             </div>
           </div>

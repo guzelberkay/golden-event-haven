@@ -41,7 +41,7 @@ const Navigation = () => {
       <div className="container-custom flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
           <span className="text-gold text-xl md:text-2xl font-bold tracking-tight">
-            Golden Events
+            EventNora
           </span>
         </Link>
 
@@ -60,10 +60,16 @@ const Navigation = () => {
             </Link>
           ))}
           
-          <button className="language-selector">
-            <Globe size={16} />
-            <span>English</span>
-          </button>
+          <div className="flex items-center gap-4">
+            <button className="language-selector">
+              <Globe size={16} />
+              <span>EN</span>
+            </button>
+            <button className="language-selector">
+              <Globe size={16} />
+              <span>TR</span>
+            </button>
+          </div>
         </nav>
 
         {/* Mobile Menu Button */}
@@ -102,6 +108,3 @@ const Navigation = () => {
       )}
     </header>
   );
-};
-
-export default Navigation;

@@ -16,7 +16,7 @@ const Layout = ({ children }: LayoutProps) => {
       <Footer />
       <Toaster />
       <div className="fixed bottom-8 left-8 text-xs text-gold/40 pointer-events-none">
-        Site available in: English
+        Site available in: English, Türkçe
       </div>
     </div>
   );
