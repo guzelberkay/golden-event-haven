@@ -3,11 +3,15 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 import { Globe, Menu, X } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { useToast } from '@/components/ui/use-toast';
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const { language, setLanguage, t } = useLanguage();
+  const { toast } = useToast();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,12 +26,21 @@ const Navigation = () => {
     setMobileMenuOpen(false);
   }, [location.pathname]);
 
+  const handleLanguageChange = (lang: 'en' | 'tr') => {
+    setLanguage(lang);
+    toast({
+      title: lang === 'en' ? 'Language Changed' : 'Dil Değiştirildi',
+      description: lang === 'en' ? 'English is now active' : 'Türkçe şimdi aktif',
+      duration: 2000,
+    });
+  };
+
   const navItems = [
-    { name: 'Home', path: '/' },
-    { name: 'About Us', path: '/about' },
-    { name: 'Services', path: '/services' },
-    { name: 'Contact', path: '/contact' },
-    { name: 'FAQ', path: '/faq' },
+    { nameEn: 'Home', nameTr: 'Ana Sayfa', path: '/' },
+    { nameEn: 'About Us', nameTr: 'Hakkımızda', path: '/about' },
+    { nameEn: 'Services', nameTr: 'Hizmetler', path: '/services' },
+    { nameEn: 'Contact', nameTr: 'İletişim', path: '/contact' },
+    { nameEn: 'FAQ', nameTr: 'SSS', path: '/faq' },
   ];
 
   return (
@@ -57,16 +70,28 @@ const Navigation = () => {
                 location.pathname === item.path && 'after:w-full font-medium'
               )}
             >
-              {item.name}
+              {language === 'en' ? item.nameEn : item.nameTr}
             </Link>
           ))}
           
           <div className="flex items-center gap-4">
-            <button className="language-selector">
+            <button 
+              className={cn(
+                "language-selector",
+                language === 'en' && "text-gold font-medium"
+              )}
+              onClick={() => handleLanguageChange('en')}
+            >
               <Globe size={16} />
               <span>EN</span>
             </button>
-            <button className="language-selector">
+            <button 
+              className={cn(
+                "language-selector",
+                language === 'tr' && "text-gold font-medium"
+              )}
+              onClick={() => handleLanguageChange('tr')}
+            >
               <Globe size={16} />
               <span>TR</span>
             </button>
@@ -96,13 +121,31 @@ const Navigation = () => {
                     location.pathname === item.path && 'font-medium'
                   )}
                 >
-                  {item.name}
+                  {language === 'en' ? item.nameEn : item.nameTr}
                 </Link>
               ))}
-              <button className="language-selector self-start py-2">
-                <Globe size={16} />
-                <span>English</span>
-              </button>
+              <div className="flex gap-4 py-2">
+                <button 
+                  className={cn(
+                    "language-selector",
+                    language === 'en' && "text-gold font-medium"
+                  )}
+                  onClick={() => handleLanguageChange('en')}
+                >
+                  <Globe size={16} />
+                  <span>English</span>
+                </button>
+                <button 
+                  className={cn(
+                    "language-selector",
+                    language === 'tr' && "text-gold font-medium"
+                  )}
+                  onClick={() => handleLanguageChange('tr')}
+                >
+                  <Globe size={16} />
+                  <span>Türkçe</span>
+                </button>
+              </div>
             </nav>
           </div>
         </div>

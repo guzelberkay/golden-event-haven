@@ -2,9 +2,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone, MessageCircle, Twitter } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const { language, setLanguage, t } = useLanguage();
   
   return (
     <footer className="bg-black text-gold/90 pt-16 pb-8">
@@ -14,7 +16,10 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className="text-xl font-bold text-gold">EventNora</h3>
             <p className="text-gold/80 text-sm max-w-xs">
-              Creating unforgettable moments with meticulous planning and elegant execution for all your special occasions.
+              {t(
+                "Creating unforgettable moments with meticulous planning and elegant execution for all your special occasions.",
+                "Tüm özel etkinlikleriniz için titiz planlama ve zarif uygulama ile unutulmaz anlar yaratıyoruz."
+              )}
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-gold hover:text-gold-light transition-colors">
@@ -37,48 +42,72 @@ const Footer = () => {
           
           {/* Quick Links */}
           <div className="space-y-4">
-            <h4 className="text-lg font-semibold text-gold">Quick Links / Hızlı Bağlantılar</h4>
+            <h4 className="text-lg font-semibold text-gold">
+              {t("Quick Links", "Hızlı Bağlantılar")}
+            </h4>
             <ul className="space-y-2">
               <li>
-                <Link to="/" className="text-gold/80 hover:text-gold transition-colors text-sm">Ana Sayfa / Home</Link>
+                <Link to="/" className="text-gold/80 hover:text-gold transition-colors text-sm">
+                  {t("Home", "Ana Sayfa")}
+                </Link>
               </li>
               <li>
-                <Link to="/about" className="text-gold/80 hover:text-gold transition-colors text-sm">Hakkımızda / About Us</Link>
+                <Link to="/about" className="text-gold/80 hover:text-gold transition-colors text-sm">
+                  {t("About Us", "Hakkımızda")}
+                </Link>
               </li>
               <li>
-                <Link to="/services" className="text-gold/80 hover:text-gold transition-colors text-sm">Hizmetler / Services</Link>
+                <Link to="/services" className="text-gold/80 hover:text-gold transition-colors text-sm">
+                  {t("Services", "Hizmetler")}
+                </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-gold/80 hover:text-gold transition-colors text-sm">İletişim / Contact</Link>
+                <Link to="/contact" className="text-gold/80 hover:text-gold transition-colors text-sm">
+                  {t("Contact", "İletişim")}
+                </Link>
               </li>
               <li>
-                <Link to="/faq" className="text-gold/80 hover:text-gold transition-colors text-sm">SSS / FAQ</Link>
+                <Link to="/faq" className="text-gold/80 hover:text-gold transition-colors text-sm">
+                  {t("FAQ", "SSS")}
+                </Link>
               </li>
             </ul>
           </div>
           
           {/* Services */}
           <div className="space-y-4">
-            <h4 className="text-lg font-semibold text-gold">Our Services / Hizmetlerimiz</h4>
+            <h4 className="text-lg font-semibold text-gold">
+              {t("Our Services", "Hizmetlerimiz")}
+            </h4>
             <ul className="space-y-2">
               <li>
-                <Link to="/services" className="text-gold/80 hover:text-gold transition-colors text-sm">Kurumsal Etkinlikler / Corporate Events</Link>
+                <Link to="/services" className="text-gold/80 hover:text-gold transition-colors text-sm">
+                  {t("Corporate Events", "Kurumsal Etkinlikler")}
+                </Link>
               </li>
               <li>
-                <Link to="/services" className="text-gold/80 hover:text-gold transition-colors text-sm">Düğün Organizasyonu / Wedding Planning</Link>
+                <Link to="/services" className="text-gold/80 hover:text-gold transition-colors text-sm">
+                  {t("Wedding Planning", "Düğün Organizasyonu")}
+                </Link>
               </li>
               <li>
-                <Link to="/services" className="text-gold/80 hover:text-gold transition-colors text-sm">Özel Partiler / Private Parties</Link>
+                <Link to="/services" className="text-gold/80 hover:text-gold transition-colors text-sm">
+                  {t("Private Parties", "Özel Partiler")}
+                </Link>
               </li>
               <li>
-                <Link to="/services" className="text-gold/80 hover:text-gold transition-colors text-sm">Ürün Lansmanları / Product Launches</Link>
+                <Link to="/services" className="text-gold/80 hover:text-gold transition-colors text-sm">
+                  {t("Product Launches", "Ürün Lansmanları")}
+                </Link>
               </li>
             </ul>
           </div>
           
           {/* Contact Info */}
           <div className="space-y-4">
-            <h4 className="text-lg font-semibold text-gold">Contact Info / İletişim Bilgileri</h4>
+            <h4 className="text-lg font-semibold text-gold">
+              {t("Contact Info", "İletişim Bilgileri")}
+            </h4>
             <div className="space-y-3">
               <div className="flex items-start space-x-3">
                 <MapPin size={18} className="text-gold mt-0.5" />
@@ -104,14 +133,28 @@ const Footer = () => {
         <div className="border-t border-gold/20 pt-8 mt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-gold/70 text-sm">
-              © {currentYear} EventNora. All rights reserved.
+              © {currentYear} EventNora. {t("All rights reserved.", "Tüm hakları saklıdır.")}
             </p>
             <div className="text-gold/70 text-xs flex gap-6">
-              <Link to="/privacy" className="hover:text-gold transition-colors">Privacy Policy</Link>
-              <Link to="/terms" className="hover:text-gold transition-colors">Terms of Service</Link>
+              <Link to="/privacy" className="hover:text-gold transition-colors">
+                {t("Privacy Policy", "Gizlilik Politikası")}
+              </Link>
+              <Link to="/terms" className="hover:text-gold transition-colors">
+                {t("Terms of Service", "Kullanım Şartları")}
+              </Link>
               <div className="flex items-center gap-4">
-                <button className="hover:text-gold transition-colors">English</button>
-                <button className="hover:text-gold transition-colors">Türkçe</button>
+                <button 
+                  className={cn("hover:text-gold transition-colors", language === 'en' && "text-gold")} 
+                  onClick={() => setLanguage('en')}
+                >
+                  English
+                </button>
+                <button 
+                  className={cn("hover:text-gold transition-colors", language === 'tr' && "text-gold")} 
+                  onClick={() => setLanguage('tr')}
+                >
+                  Türkçe
+                </button>
               </div>
             </div>
           </div>

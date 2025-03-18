@@ -7,8 +7,11 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const FAQ = () => {
+  const { language, t } = useLanguage();
+  
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -46,9 +49,9 @@ const FAQ = () => {
         <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gold to-transparent"></div>
         <div className="container-custom relative z-10">
           <div className="max-w-3xl mx-auto text-center page-transition">
-            <h1 className="heading-1 text-gold mb-4">FAQ</h1>
+            <h1 className="heading-1 text-gold mb-4">{language === 'en' ? 'FAQ' : 'SSS'}</h1>
             <p className="text-gold-light/80 text-lg">
-              Frequently Asked Questions / Sıkça Sorulan Sorular
+              {language === 'en' ? 'Frequently Asked Questions' : 'Sıkça Sorulan Sorular'}
             </p>
           </div>
         </div>
@@ -61,14 +64,28 @@ const FAQ = () => {
               <AccordionItem key={index} value={`item-${index}`} className="bg-white rounded-lg shadow-sm px-6">
                 <AccordionTrigger className="text-left">
                   <div className="space-y-1">
-                    <div className="font-semibold text-black">{faq.question}</div>
-                    <div className="text-sm text-gray-600">{faq.questionTr}</div>
+                    <div className="font-semibold text-black">
+                      {language === 'en' ? faq.question : faq.questionTr}
+                    </div>
+                    {language !== 'en' && (
+                      <div className="text-sm text-gray-600">{faq.question}</div>
+                    )}
+                    {language === 'en' && (
+                      <div className="text-sm text-gray-600">{faq.questionTr}</div>
+                    )}
                   </div>
                 </AccordionTrigger>
                 <AccordionContent>
                   <div className="pt-2 space-y-2">
-                    <p className="text-gray-700">{faq.answer}</p>
-                    <p className="text-gray-600">{faq.answerTr}</p>
+                    <p className="text-gray-700">
+                      {language === 'en' ? faq.answer : faq.answerTr}
+                    </p>
+                    {language !== 'en' && (
+                      <p className="text-gray-600">{faq.answer}</p>
+                    )}
+                    {language === 'en' && (
+                      <p className="text-gray-600">{faq.answerTr}</p>
+                    )}
                   </div>
                 </AccordionContent>
               </AccordionItem>
