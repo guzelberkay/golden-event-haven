@@ -108,3 +108,7 @@ const Navigation = () => {
       )}
     </header>
   );
+};
+
+export default Navigation;
+
